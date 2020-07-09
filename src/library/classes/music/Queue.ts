@@ -30,7 +30,7 @@ export class Queue extends EventEmitter {
         if (evt && ["REPLACED", "STOPPED"].includes(evt.reason)) return;
 
         if (this.repeat.song) this.next.unshift(this.current);
-        else if (this.repeat.queue) this.previous.unshift(this.current);
+        else if (this.repeat.queue) this.previous.push(this.current);
 
         if (this.message.guild.me.voice.channel.members.size === 1)
           return this.emit("finished", "alone");
