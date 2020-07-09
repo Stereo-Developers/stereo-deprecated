@@ -88,6 +88,7 @@ export class StereoClient extends AkairoClient {
     automateCategories: true,
     ignoreCooldown: this.ownerID,
     ignorePermissions: this.ownerID,
+    defaultCooldown: 15e3
   });
 
   public eventHandler: ListenerHandler = new ListenerHandler(this, {
