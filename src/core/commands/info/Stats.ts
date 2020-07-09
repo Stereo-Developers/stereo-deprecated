@@ -65,7 +65,7 @@ export default class StatsCommand extends Command {
 
   public async commits() {
     const json = await (
-      await fetch(`https://api.github.com/repos/NikStudios/Stereo/commits`)
+      await fetch(`https://api.github.com/repos/StereoDevelopments/stereo/commits`)
     ).json();
 
     let str = "";
