@@ -4,7 +4,7 @@ bot:
   links:
     discord: https://discord.gg/YEGDEuE
     invite: https://discord.com/oauth2/authorize?client_id=725808086933176410&scope=bot&permissions=36703296
-    github: https://github.com/NikStudios/Stereo
+    github: https://github.com/StereoDevelopments/Stereo
   tokens:
     spotify:
       id: 
