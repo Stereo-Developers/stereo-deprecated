@@ -1,0 +1,243 @@
+commands:
+  info:
+    ping:
+      description:
+        content: "Displays the bot's latency"
+      response: "💓 **Shard Heartbeat**: **{{heartbeat}}ms**\n📡 **Discord Roundtrip**: **{{roundtrip}}ms**"
+    help:
+      description:
+        content: "Displays the command list and information on a selected command"
+        usage: "help <command>"
+        examples: ["help", "help play"]
+      embeds:
+        main:
+          footer: "© {{botname}} 2020"
+          author: "Available commands for {{member}}"
+        info:
+          fields:
+            main: "• Main Information"
+            other: "• Other Information"
+    stats:
+      description:
+        content: "Displays the bots information."
+      embed:
+        author: "Information | {{bot}}"
+        fields:
+          basic:
+            name: "• Basic"
+            text: "**Guilds**: {{guilds}}\n**Users**: {{users}}\n**Shards**: {{shards}}\n**Emojis**: {{emojis}}"
+          versions:
+            name: "• Versions"
+            text: "**Node.js**: {{nodejs}}\n**NPM**: {{npm}}\n**Discord.js**: {{discordjs}}\n**Akairo**: {{akairo}}"
+          advanced:
+            name: "• Advanced"
+            text: "**OS**: {{os}}\n**CPU Usage**: {{cpuusage}}%\n**Memory Usage**: {{memusage}} MB/s\n**Players**: {{players}}"
+          github:
+            name: "• Github Commits"
+  music:
+    errors:
+      novc: "Please join a voice channel"
+      foreignvc: "Please join my voice channel"
+      noresults: "🔍 No results were found for **{{query}}**"
+      noplayer: "There is no player running for the guild"
+      missingperms: "I cannot join that voice channel because I am missing the permission(s): {{permsisions}}"
+      exception: "I cannot play that song due to an exception made on the song, because **{{message}}**"
+    play:
+      description:
+        content: "Plays the specified song"
+        usage: "play (song) <type>"
+        examples:
+          [
+            "play Live Like This - Quadeca",
+            "play https://www.youtube.com/watch?v=jA-jtDKq5mY",
+            "play Unusual - Quadeca --type=soundcloud",
+            "play https://soundcloud.com/quadecax8/unusual",
+            "play https://www.youtube.com/playlist?list=PLOzDu-MXXLliO9fBNZOQTBDddoA3FzZUo",
+          ]
+        types: ["--type=", "-type=", "--t=", "-t="]
+      prompts:
+        start: "What would you like to play?"
+      responses:
+        playlist: "Loaded Playlist (`{{amt}}`)\n\n{{name}}"
+        song: "Loaded Track\n\n[{{name}}]({{uri}})"
+      errors:
+        cancelled: "Cancelled the song selection due to user request"
+        invalidtext: "Invalid number, I will cancel the collector now."
+        timeout: "Timeout threshold has been exceeded, cancelling the song collector."
+    queue:
+      description:
+        content: "Shows the queue, or just shows the currently playing song"
+        usage: "queue <page>"
+        examples: ["queue", "queue 2"]
+      embeds:
+        author: "Queue | {{guild}}"
+        field: "• Now Playing"
+    nowplaying:
+      description:
+        content: "Shows the currently playing song"
+      embed: "{{progress}}\n\n[{{title}}]({{uri}})"
+    skip:
+      description:
+        content: "Skips the currently playing song"
+      success: "Successfully skipped the current song."
+    volume:
+      description:
+        content: "Changes the players volume"
+        usage: "volume <1-200>"
+        examples: ["volume", "volume 20"]
+      noargs: "The current players volume is **{{volume}}/200**"
+      errors:
+        wrongvol: "**{{args}}** is not a valid choice. Please choose again, but with a number 1 to 200"
+        confirm: "This volume could impair your hearing ability, are you sure you want to change it to **{{amount}}**?\n\nType: {{words}} to confirm or deny the prompt."
+        cancelled: "Alright, I will not change the volume."
+      success: "Changed the players volume to **{{volume}}**."
+    bassboost:
+      description:
+        content: "Changes the bass level of the player"
+        usage: "bassboost <level>"
+        examples: ["bassboost", "bassboost medium"]
+      noargs: "The current bass level is **{{level}}**"
+      error: "**{{level}}** is an invalid level. The valid levels are:\n\n{{levels}}"
+      success: "Changed the players bass level to **{{level}}**"
+    repeat:
+      description:
+        content: "Repeats the song or queue"
+        usage: "repeat <song, track|queue>"
+        examples: ["repeat", "repeat song"]
+      noargs: "You are currently looping {{the}} **{{type}}**"
+      error: "Invalid type, the valid types are:\n\n{{types}}"
+      success: "Successfully {{action}} looping the **{{type}}**"
+    pause:
+      description:
+        content: "Pauses the player"
+      error: "The player is already paused."
+      success: "Paused the players playback"
+    resume:
+      description:
+        content: "Resumes the player"
+      error: "The player isn't even paused"
+      success: "Started the music back up!"
+    disconnect:
+      description:
+        content: "Disconnects the player"
+      prompts:
+        confirm:
+          message: "Are you sure you'd like to disconnect the player?\n\nType: {{words}} to confirm or deny the prompt."
+          cancelled: "Alright, I will not disconnect the player."
+    shuffle:
+      description:
+        content: "Shuffles the queue around."
+      success: "Shuffled the queue successfully."
+      error: "There is nothing to even shuffle."
+    radio:
+      description:
+        content: "Plays from the radio"
+        usgae: "radio (station)"
+        examples: ["radio Kiss FM", "radio Kiss UK"]
+      prompts:
+        start: "What radio station would you like to play?"
+    nightcore:
+      description:
+        content: "Becomes every nightcore channel and pitches up the music and speeds it up"
+      success: "Nightcore activated!"
+    slowed:
+      description:
+        content: "Slows down the music"
+      success: "Slow-mo activated!"
+    reset:
+      description:
+        content: "Resets any filters you set."
+      success: "Cleared the filters."
+  settings:
+    language:
+      description:
+        content: "Changes the language in the guild"
+        usage: "language <set|del, delete, rm, remove|current|languages, langs> {args}"
+        examples:
+          ["language set en-US", "language del", "language langs", "language"]
+      set:
+        prompts:
+          start: "Please provide a language"
+        error: "Invalid language, please run **{{prefix}}language langs** for the languages"
+        success: "Changed the language successfully to **{{language}}**"
+      del:
+        prompts:
+          confirm: "Are you sure you would like reset the language?\n\nType: {{words}} to confirm or deny the prompt."
+          cancelled: "Alright, cancelled the language deletion."
+        success: "Reset the language back to **en-US**"
+      current: "The current language is: **{{language}}**"
+      languages: "Here are the available languages:\n\n{{langs}}"
+    prefix:
+      description:
+        content: "Adds, or removes prefixes"
+        usage: "prefix <add|remove, rm, del, delete|current> {args}"
+        examples:
+          [
+            "prefix add ss!",
+            "prefix add `stereo `",
+            "prefix remove ss!",
+            "prefix current",
+            "prefix",
+          ]
+      add:
+        prompts:
+          start: "What prefix would you like to add?"
+          retry: "This prefix is already a prefix, or it is above 12 characters, or below 1 character please try again."
+        success: "Added the prefix `{{prefix}}`"
+        error: "You are at the max prefix amount, please remove a few."
+      remove:
+        prompts:
+          start: "What prefix would you like to remove?"
+          retry: "That isn't even a prefix, please try again"
+          confirm: "Are you sure you'd like to remove this prefix?\n\nType: {{words}} to confirm or deny the prompt."
+          cancelled: "Alright, cancelled the prefix deletion"
+        success: "Removed the prefix `{{prefix}}`"
+      current: "Here are the current guild prefixes:\n\n{{prefixes}}"
+    djrole:
+      description:
+        content: "Configures the DJ role"
+        usage: "djrole <set|del, delete, remove, rm|current> {args}"
+        examples:
+          ["djrole set @DJ", "djrole delete", "djrole current", "djrole"]
+      set:
+        prompts:
+          start: "What would you like the DJ role to be?"
+          retry: "Invalid role, please try again"
+        error: "{{role}} is already the DJ role.."
+        success: "Set the DJ role to {{role}}"
+      del:
+        prompts:
+          confirm: "Are you sure you want to reset the DJ role?\n\nType: {{words}} to confirm or deny the prompt."
+          cancelled: "Alright, cancelled the deletion of the DJ role"
+        success: "Reset the DJ role back to nothing successfully."
+      current: "The current DJ role is {{role}}"
+bot:
+  prompts:
+    start: "**{{prompt}}**\n\nYou can type `cancel` to cancel."
+    cancel: "You have cancelled the command."
+    ended: "The retry threshold has been exceeded, I will be cancelling now."
+    timeout: "Timeout time has been exceeded, cancelled the command for you."
+    confirmWords: ["yes", "no"]
+  queue:
+    stuck: "Un oh, something went wrong... Give me a moment please."
+    nowplaying: "{{author}}\n\n[{{title}}]({{uri}})"
+    error: "That wasn't expected! Please report it to our [report centere]({{invite}})\n```js\n{{error}}```"
+    finished:
+      alone: "You left me in a voice channel alone, so I will be leaving it now."
+      empty: "The queue has emptied out, so I will be leaving now."
+      disconnected: "I have now disconnected my player, goodbye!"
+  events:
+    handler:
+      cooldown: "Please wait **{{time}}** until using that command again."
+      permissions:
+        bot: "Oops, I am missing the permission{{s}}: {{permissions}}"
+        user: "Oops, you are missing the permission{{s}}: {{permissions}}"
+      owner: "This command is flagged as owner only."
+      guild: "This command can only be run in a server. Please find a server with me in it, and then run this command."
+      error: "Sorry about that, I got an error! Please report it to the [support centere]({{discord}})\n```js\n{{error}}```"
+      dj: "This command is only allowed for DJs to use."
+    client:
+      guild:
+        create: "We have joined **{{name}}**!\n\nWe are now in **{{amt}}** guilds."
+        delete: "We have left **{{name}}**.\n\nWe are now in **{{amt}}** guilds."
+  otherwise: "Invalid usage! Please run: **{{prefix}}help {{cmd}}** for the valid usage."

@@ -1,0 +1,25 @@
+bot:
+  prefix: []
+  owners: []
+  links:
+    discord: https://discord.gg/YEGDEuE
+    invite: https://discord.com/oauth2/authorize?client_id=725808086933176410&scope=bot&permissions=36703296
+    github: https://github.com/NikStudios/Stereo
+  tokens:
+    spotify:
+      id: 
+      secret: 
+    discord: 
+  id: ""
+  channels:
+    guilds: ""
+    errors: ""
+nodes:
+  [
+    {
+      id: "Stereo Alca",
+      host: "localhost",
+      port: 1337,
+      password: "",
+    },
+  ]

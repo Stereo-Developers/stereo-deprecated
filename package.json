@@ -1,0 +1,39 @@
+{
+  "name": "stereo",
+  "version": "1.0.0",
+  "description": "A dedicated music bot",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "tsc && clear && node .",
+    "build": "tsc && pm2 restart Stereo && clear && pm2 logs Stereo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StereoDevelopments/stereo.git"
+  },
+  "author": "Nyro Development Team",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/StereoDevelopments/stereo/issues"
+  },
+  "homepage": "https://github.com/StereoDevelopments/stereo#readme",
+  "dependencies": {
+    "@ayanaware/logger": "^2.2.1",
+    "@lavalink/encoding": "^0.1.1",
+    "@prisma/client": "^2.1.3",
+    "discord-akairo": "github:discord-akairo/discord-akairo",
+    "discord.js": "github:discordjs/discord.js",
+    "dot-prop": "^5.2.0",
+    "lavaclient": "^3.0.5",
+    "ms": "^2.1.2",
+    "os": "^0.1.1",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@kyflx-dev/lavalink-types": "^1.0.2",
+    "@prisma/cli": "^2.1.3",
+    "@types/ms": "^0.7.31",
+    "@types/node": "^14.0.14",
+    "@types/node-fetch": "^2.5.7"
+  }
+}
