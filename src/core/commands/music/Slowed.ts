@@ -29,6 +29,20 @@ export default class SlowedCommand extends Command {
           .setDescription(message.translate("commands.music.errors.foreignvc"))
       );
 
+    if (player.filter === "slowed") {
+      player.send("filters", {});
+
+      player.filter = "default";
+
+      return message.util.send(
+        new MessageEmbed()
+          .setColor("#7289DA")
+          .setDescription(
+            message.translate("commands.music.slowed.responses.turnedoff")
+          )
+      );
+    }
+
     player.send("filters", {
       equalizer: [
         { band: 1, gain: 0.3 },
@@ -38,10 +52,14 @@ export default class SlowedCommand extends Command {
       tremolo: { depth: 0.3, frequency: 14 },
     });
 
+    player.filter = "slowed";
+
     return message.util.send(
       new MessageEmbed()
         .setColor("#7289DA")
-        .setDescription(message.translate("commands.music.slowed.success"))
+        .setDescription(
+          message.translate("commands.music.slowed.responses.turnedon")
+        )
     );
   }
 }
