@@ -34,6 +34,14 @@ commands:
             text: "**OS**: {{os}}\n**CPU Usage**: {{cpuusage}}%\n**Memory Usage**: {{memusage}} MB/s\n**Players**: {{players}}"
           github:
             name: "• Github Commits"
+    privacy:
+      description:
+        content: "Shows the bot's privacy policy"
+      response: "As of discords upcoiming terms, you must provide a privacy policy. This is Stereo's privacy policy:\n\n{{url}}"
+    speedtest:
+      description:
+        content: "Displays the speed of the VPS we are on."
+      response: ">>> ```md\n==[ Speed Test Results ]==\n\n- Download: {{download}}\n- Upload: {{upload}}```"
   music:
     errors:
       novc: "Please join a voice channel"
@@ -94,7 +102,7 @@ commands:
     bassboost:
       description:
         content: "Changes the bass level of the player"
-        usage: "bassboost <level>"
+        usage: "bassboost <high|medium|low|none>"
         examples: ["bassboost", "bassboost medium"]
       noargs: "The current bass level is **{{level}}**"
       error: "**{{level}}** is an invalid level. The valid levels are:\n\n{{levels}}"
@@ -139,15 +147,36 @@ commands:
     nightcore:
       description:
         content: "Becomes every nightcore channel and pitches up the music and speeds it up"
-      success: "Nightcore activated!"
+      responses:
+        turnedon: "Nightcore activated!"
+        turnedoff: "Nightcore de-activated!"
     slowed:
       description:
         content: "Slows down the music"
-      success: "Slow-mo activated!"
+      responses:
+        turnedon: "Slowed activated!"
+        turnedoff: "Slowed de-activated!"
     reset:
       description:
         content: "Resets any filters you set."
       success: "Cleared the filters."
+      error: "There isn't even a filter on the player."
+    seek:
+      description:
+        content: "Seeks to a certain part of the track."
+        usage: "seek (time)"
+        examples: ["seek 2m", "seek 1 minute", "seek 1:24"]
+      prompts:
+        start: "What would you like to seek to?"
+        retry: "I would probably need a timestamp."
+      error: "Invalid time, **{{time}}** is not a valid time on this track."
+      success: "Seeked to **{{time}}**."
+    soft:
+      description:
+        content: "Softens the music"
+      responses:
+        turnedon: "Softened the music."
+        turnedoff: "Changed the music back to default"
   settings:
     language:
       description:
