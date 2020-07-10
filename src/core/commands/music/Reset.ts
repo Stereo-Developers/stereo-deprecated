@@ -29,7 +29,17 @@ export default class ReseteCommand extends Command {
           .setDescription(message.translate("commands.music.errors.foreignvc"))
       );
 
+    if (player.filter === "default") {
+      return message.util.send(
+        new MessageEmbed()
+          .setColor("#f55e53")
+          .setDescription(message.translate("commands.music.reset.error"))
+      );
+    }
+
     player.send("filters", {});
+
+    player.filter = "default";
 
     return message.util.send(
       new MessageEmbed()
