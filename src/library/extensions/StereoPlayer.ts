@@ -3,7 +3,7 @@ import { Queue } from "../classes";
 
 type Levels = "hard" | "medium" | "low" | "none";
 type Repeats = "song" | "queue" | "nothing";
-type Filters = "nightcore" | "slowed" | "default";
+type Filters = "nightcore" | "slowed" | "default" | "soft" | "trebblebass";
 
 export default Structures.extend(
   "player",
