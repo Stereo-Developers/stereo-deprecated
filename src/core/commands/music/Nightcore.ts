@@ -4,7 +4,7 @@ import { Message, MessageEmbed } from "discord.js";
 export default class NightcoreCommand extends Command {
   public constructor() {
     super("nightcore", {
-      aliases: ["nightcore"],
+      aliases: ["nightcore", "nc"],
       description: (m: Message) =>
         m.translate("commands.music.nightcore.description"),
       channel: "guild",
@@ -29,6 +29,20 @@ export default class NightcoreCommand extends Command {
           .setDescription(message.translate("commands.music.errors.foreignvc"))
       );
 
+    if (player.filter === "nightcore") {
+      player.send("filters", {});
+
+      player.filter = "default";
+
+      return message.util.send(
+        new MessageEmbed()
+          .setColor("#7289DA")
+          .setDescription(
+            message.translate("commands.music.nightcore.responses.turnedoff")
+          )
+      );
+    }
+
     player.send("filters", {
       equalizer: [
         { band: 1, gain: 0.3 },
@@ -38,10 +52,14 @@ export default class NightcoreCommand extends Command {
       tremolo: { depth: 0.3, frequency: 14 },
     });
 
+    player.filter = "nightcore";
+
     return message.util.send(
       new MessageEmbed()
         .setColor("#7289DA")
-        .setDescription(message.translate("commands.music.nightcore.success"))
+        .setDescription(
+          message.translate("commands.music.nightcore.responses.turnedon")
+        )
     );
   }
 }
