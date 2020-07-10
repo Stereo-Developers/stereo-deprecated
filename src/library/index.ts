@@ -50,5 +50,6 @@ declare module "lavaclient" {
     _connected: boolean;
     bass: "hard" | "medium" | "low" | "none";
     repeating: "song" | "queue" | "nothing";
+    filter: "nightcore" | "slowed" | "default" | "soft" | "trebblebass";
   }
 }
