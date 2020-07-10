@@ -12,13 +12,11 @@ export default class CooldownEvent extends Listener {
 
   exec(message: Message, cmd: Command, time: number) {
     return message.util.send(
-      new MessageEmbed()
-        .setColor("#f55e53")
-        .setDescription(
-          message.translate("bot.events.cooldown", {
-            time: ms(time, { long: true }),
-          })
-        )
+      new MessageEmbed().setColor("#f55e53").setDescription(
+        message.translate("bot.events.handler.cooldown", {
+          time: ms(time, { long: true }),
+        })
+      )
     );
   }
 }
