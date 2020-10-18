@@ -1,4 +1,12 @@
 # Stereo  
+
+**PLEASE NOTE**:
+
+This code is deprecated. As Stereo v2 comes out, we will allow v1's code to be public. However, reast in piece to open source. 
+
+Thank you! Now, onto the README file.
+
+---
   
 Okay, We know... you can just use Rythm, Groovy, or the countless other Music Bots for Discord  
 but...  
